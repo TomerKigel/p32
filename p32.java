@@ -1,5 +1,5 @@
 import java.util.*;
-public class p61 {
+public class p32 {
 
 	public static void main(String[] args) {
 		Vector<Integer> Inputs = new Vector<Integer>();
