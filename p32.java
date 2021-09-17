@@ -5,11 +5,19 @@ public class p32 {
 		Vector<Integer> Inputs = new Vector<Integer>();
 		Vector<Integer> outputs = new Vector<Integer>();
 
-		Inputs.add(9);
+		boolean pandigital[] = new boolean[9];
+		for (int y = 0; y < pandigital.length; y++) {
+			pandigital[y] = false;
+		}
+		boolean db= false;
+
+		Inputs.add(7254);
+		Inputs.add(39);
+		Inputs.add(186);
 		outputs.add(45228);
 
 
-		Test(Inputs,outputs);
+		Test(Inputs,outputs,pandigital,db);
 		System.out.println("The answer is:" + p32(9,9999,999));
 
 	}
@@ -72,25 +80,36 @@ public class p32 {
 				continue;
 			return_value = false;
 		}
-		
+
 		for (int i = 0; i < array.length; i++) {
 			array[i] = false;
 		}
-		
+
 		return return_value;
 
 	}
-	public static void Test(Vector<Integer> Inputs,Vector<Integer> Excpected_Outputs)
+	public static void Test(Vector<Integer> Inputs,Vector<Integer> Excpected_Outputs,boolean pandigital[],boolean db)
 	{
+		boolean test_passed = true;
 		int i = 1;
 		for (Integer num : Inputs) {
 			System.out.print("Test number " + i +":");
-			if(p32(num,9999,999) == Excpected_Outputs.elementAt(i-1))
+			if(Check_Single_section(num,pandigital,db) == false) {
 				System.out.println("Passed");
+			}
 			else
+			{
 				System.out.println("Failed");
+				test_passed = false;
+			}
 			i++;
 		}
+		
+		if(test_passed)
+			System.out.println("Full test Passed");
+		else
+			System.out.println("Full test Failed");
+
 	}
 
 }
